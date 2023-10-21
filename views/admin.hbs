@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #f2f2f2;
+            display: block;
+        }
+
+        .container {
+            margin-left: 260px;
+            padding: 20px;
+        }
+
+        .dashboard {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px 2px;
+            cursor: pointer;
+        }
+
+        .btn-edit {
+            background-color: #008CBA;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+        }
+
+        .admin-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2 style="color: azure; margin-left: 20px">WELCOME ADMIN!</h2>
+        <a href="/toy">HOME BEE STORE</a>
+        <a href="#">Ordinary</a>
+        <a href="#">Control</a>
+        <a href="#">Settings</a>
+    </div>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="dashboard">
+            <h2>Data</h2>
+            <table>
+                <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                    </tr>
+                {{#each toys }}
+                <tbody>
+                    <tr>
+                        <td>{{ name }}</td>
+                        <td>{{ price }}</td>
+                        <td>{{ description }}</td>
+                        <td><img src="{{ image }}" alt="" width="100" height="100"></td>
+                        <td>
+                            <button class="btn btn-edit">Edit</button>
+                            <button class="btn btn-delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+            <a href="/toy/add"><button class="btn" >Add New</button></a>
+        </div>
+    </div>
+</body>
+
+</html>

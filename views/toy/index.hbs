@@ -1,0 +1,176 @@
+<style>
+    a {
+        font-size: 14px;
+        font-weight: 500
+    }
+
+    .superNav {
+        font-size: 13px;
+    }
+
+    .form-control {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    @media screen and (max-width:540px) {
+        .centerOnMobile {
+            text-align: center
+        }
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        /* Change to your desired background color */
+        z-index: 1000;
+    }
+
+    .bg-image:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s;
+    }
+
+    .nav-item-in:hover {
+        background-color: antiquewhite;
+        transform: scale(1.1);
+        transition: transform 0.3s;
+    }
+
+    .nav-item-res:hover {
+        background-color: antiquewhite;
+        transform: scale(1.1);
+        transition: transform 0.3s;
+    }
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" style="margin-bottom: 20px;" href="/toy"><i class="fa-solid fa-shop me-2"></i> <strong>BETA SHOP</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <form action="/toy/search" method="post">
+            <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="ms-auto d-none d-lg-block">
+                <div class="input-group">
+                    <span class="border-warning input-group-text bg-warning text-white"><i
+                            class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="search" class="form-control border-warning" name="name" placeholder="Search by name" style="color:#7a7a7a">
+                    <button class="btn btn-warning text-white">Search</button>
+                </div>
+            </div>
+        </form>
+            <ul class="navbar-nav ms-auto ">
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-uppercase" href="/ordinary">Ordinary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-uppercase" href="/control">Control</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-uppercase" href="#">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-uppercase" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-uppercase" href="#">About</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto ">
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-uppercase" href="#"><i class="fa-solid fa-cart-shopping me-1"></i>
+                        Cart</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="loginout" style="margin-left:30px; margin-bottom: 20px">
+        <ul class="navbar-nav ms-auto" style="margin-left: 30px">
+            <li class="nav-item-in">
+                <a class="nav-link mx-2 text-uppercase" href="/"><i class="fa-solid fa-circle-user me-1">
+                        <span id="nameusername">LogOut</span>
+                    </i>
+                </a>
+            </li>
+            <li class="nav-item-res">
+                <a class="nav-link mx-2 text-uppercase" href="/register" id="registerLink"><i class="fa-solid fa-circle-user me-1"></i>
+                    Register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section style="background-color: #eee;">
+    <div class="text-center container py-5">
+        <h4 class="mt-4 mb-5"><strong>All Product</strong></h4>
+        <div class="row">
+            <h1>Ordinary Toys</h1>
+            {{#each ordinarys }}
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="card">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                        data-mdb-ripple-color="light">
+                        <a href="/ordinary/detail/{{_id}}"><img src="{{image}}" class="w-100" /></a>
+                        <a href="#!">
+                            <div class="mask">
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="/ordinary/detail/{{_id}}" class="text-reset">
+                            <h5 class="card-title mb-3">{{ name }}</h5>
+                        </a>
+                        <h6 class="mb-3">{{ price }}</h6>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="row">
+            <h1>Control Toys</h1>
+            {{#each control }}
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="card">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                        data-mdb-ripple-color="light">
+                        <a href="/control/detail/{{_id}}"><img src="{{image}}" class="w-100" /></a>
+                        <a href="#!">
+                            <div class="mask">
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="/control/detail/{{_id}}" class="text-reset">
+                            <h5 class="card-title mb-3">{{ name }}</h5>
+                        </a>
+                        <h6 class="mb-3">{{ price }}</h6>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+</html>
